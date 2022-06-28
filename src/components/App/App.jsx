@@ -21,13 +21,16 @@ const App = () => {
   }, [useWindowDimensions()]);
 
   const onShowFilters = () => setFilterShow(!isFilterShow);
+  const onCloseFilters = () => setFilterShow(false);
 
   return (
     <div className={classes.container}>
       <MobileWrapper onShowFilters={onShowFilters} />
       <HeaderLogo />
       <main className={classes.content}>
-        <FilterList show={isFilterShow} />
+        {isFilterShow ? (
+          <FilterList show={isFilterShow} onCloseFilters={onCloseFilters} />
+        ) : null}
         <div className={classes['right-wrapper']}>
           <Tabs />
           <TicketList />

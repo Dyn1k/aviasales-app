@@ -16,6 +16,7 @@ const MobileWrapper = ({ onShowFilters }) => (
         className={classes['menu-button__image']}
         src={FilterMenu}
         alt="Filter Menu"
+        id="close-button"
       />
     </button>
   </div>

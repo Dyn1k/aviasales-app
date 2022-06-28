@@ -13,9 +13,6 @@
   text-transform: uppercase;
   margin: 10px 20px;
 }
-.filter-list--hide {
-  display: none;
-}
 
 @media screen and (max-width: 768px) {
   .filter-list {

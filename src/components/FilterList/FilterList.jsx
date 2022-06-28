@@ -1,29 +1,42 @@
 import React from 'react';
 
-import cn from 'classnames';
 import PropTypes from 'prop-types';
-
+import { getWindowDimensions } from '../../hooks/useWindowDimensions';
 import Filter from '../Filter';
 import FiltersName from './FiltersName';
 
 import classes from './FilterList.module.css';
 
-const FilterList = ({ show }) => (
-  <div
-    className={cn(
-      classes['filter-list'],
-      !show ? classes['filter-list--hide'] : null
-    )}
-  >
-    <h3 className={classes['filter-list__title']}>количество пересадок</h3>
-    {FiltersName.map((item) => (
-      <Filter key={item.label} property={item} />
-    ))}
-  </div>
-);
+const FilterList = ({ onCloseFilters }) => {
+  const listRef = React.createRef();
 
-FilterList.propTypes = {
-  show: PropTypes.bool.isRequired,
+  const handleClick = (e) => {
+    if (!(e.target.id === 'close-button')) {
+      if (
+        !listRef?.current?.contains(e.target) &&
+        getWindowDimensions() <= 768
+      ) {
+        onCloseFilters();
+      }
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, []);
+
+  return (
+    <div className={classes['filter-list']} ref={listRef}>
+      <h3 className={classes['filter-list__title']}>количество пересадок</h3>
+      {FiltersName.map((item) => (
+        <Filter key={item.label} property={item} />
+      ))}
+    </div>
+  );
 };
 
+FilterList.propTypes = {
+  onCloseFilters: PropTypes.func.isRequired,
+};
 export default FilterList;
