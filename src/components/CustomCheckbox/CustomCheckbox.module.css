@@ -1,0 +1,23 @@
+.checkbox {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+.checkbox input[type=checkbox] {
+  display: none;
+}
+.checkbox--default {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #9abbce;
+  border-radius: 2px;
+}
+.checkbox--checked {
+  background-image: url("./Shape.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border: 1px solid #2196f3;
+}
+
+/*# sourceMappingURL=CustomCheckbox.module.css.map */

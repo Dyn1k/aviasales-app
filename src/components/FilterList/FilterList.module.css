@@ -1,0 +1,29 @@
+.filter-list {
+  background-color: #ffffff;
+  padding: 10px 0;
+  filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.25));
+  border-radius: 5px;
+  color: #4a4a4a;
+  height: fit-content;
+}
+.filter-list__title {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12px;
+  text-transform: uppercase;
+  margin: 10px 20px;
+}
+.filter-list--hide {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .filter-list {
+    width: 232px;
+    position: fixed;
+    top: 70px;
+    z-index: 100;
+  }
+}
+
+/*# sourceMappingURL=FilterList.module.css.map */

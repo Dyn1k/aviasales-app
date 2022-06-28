@@ -1,0 +1,13 @@
+@import 'fonts/opensans';
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+.body {
+  background-color: #f3f7fa;
+  min-height: 100vh;
+}

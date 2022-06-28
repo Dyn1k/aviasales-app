@@ -1,0 +1,21 @@
+.logo {
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    margin-top: 50px;
+  }
+}
+@media screen and (max-width: 532px) {
+  .logo {
+    margin-top: 55px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .logo {
+    margin-top: 60px;
+  }
+}
+
+/*# sourceMappingURL=HeaderLogo.module.css.map */

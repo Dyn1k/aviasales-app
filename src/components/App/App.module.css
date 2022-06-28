@@ -1,0 +1,43 @@
+.container {
+  max-width: 960px;
+  margin: auto;
+  padding: 40px 103px 50px 103px;
+}
+
+.content {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 232px auto;
+  column-gap: 20px;
+}
+
+.right-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 100%;
+}
+
+@media screen and (max-width: 890px) {
+  .container {
+    padding: 20px 50px 40px 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .content {
+    margin-top: 10px;
+    grid-template-columns: auto;
+  }
+}
+@media screen and (max-width: 532px) {
+  .container {
+    padding: 15px 16px 20px 16px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .container {
+    padding: 8px;
+  }
+}
+
+/*# sourceMappingURL=App.module.css.map */

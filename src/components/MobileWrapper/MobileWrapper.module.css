@@ -1,0 +1,48 @@
+.mobile-wrapper {
+  display: none;
+}
+
+.menu-button {
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  filter: brightness(1.5);
+  align-self: center;
+  margin-left: 50px;
+  transform: scale(1);
+  transition-duration: 0.2s;
+  border: none;
+}
+.menu-button__image {
+  width: 100%;
+  height: 100%;
+}
+.menu-button:hover {
+  transform: scale(1.07);
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-wrapper {
+    display: flex;
+    position: fixed;
+    background-color: #ffffff;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+  }
+}
+@media screen and (max-width: 532px) {
+  .menu-button {
+    margin-left: 16px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .menu-button {
+    margin-left: 8px;
+  }
+}
+
+/*# sourceMappingURL=MobileWrapper.module.css.map */

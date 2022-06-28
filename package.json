@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "classnames": "^2.3.1",
     "eslint": "^8.17.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -33,9 +34,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint ./src/**",
-    "lint:fix": "eslint ./src/** --fix",
-    "format": "prettier --write ./src/**",
+    "lint": "eslint ./src/**/*.jsx",
+    "lint:fix": "eslint ./src/**/*.jsx --fix",
+    "format": "prettier --write ./src/**/*.jsx",
     "prepare": "husky install"
   },
   "eslintConfig": {
