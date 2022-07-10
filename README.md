@@ -1,1 +1,1 @@
-[Demo](https://aviasales-1p2givziq-dyn1k.vercel.app/)
+[Demo](https://aviasales-app-dyn1k.vercel.app/)
