@@ -2,14 +2,20 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
+
 import CustomCheckbox from '../CustomCheckbox';
 
-import s from './Filter.module.scss';
+import classes from './Filter.module.scss';
 
-const Filter = ({ property }) => (
-  // eslint-disable-next-line jsx-a11y/label-has-associated-control
-  <label className={s.filter} htmlFor={property.label}>
-    <CustomCheckbox label={property.label} />
+const Filter = ({ property, filter, onToggleFilter }) => (
+  <label
+    onChange={() => onToggleFilter(property.label)}
+    className={classes.filter}
+    htmlFor={property.label}
+  >
+    <CustomCheckbox label={property.label} checked={filter[property.label]} />
     <span>{property.name}</span>
   </label>
 );
@@ -19,6 +25,18 @@ Filter.propTypes = {
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
+  filter: PropTypes.shape({
+    TRANSFERS_ALL: PropTypes.bool.isRequired,
+    TRANSFERS_WITHOUT: PropTypes.bool.isRequired,
+    TRANSFERS_ONE: PropTypes.bool.isRequired,
+    TRANSFERS_TWO: PropTypes.bool.isRequired,
+    TRANSFERS_THREE: PropTypes.bool.isRequired,
+  }).isRequired,
+  onToggleFilter: PropTypes.func.isRequired,
 };
 
-export default Filter;
+const mapStateToProps = (state) => ({
+  filter: state.filter,
+});
+
+export default connect(mapStateToProps, actions)(Filter);

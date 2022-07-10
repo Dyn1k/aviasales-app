@@ -1,50 +1,92 @@
 import React from 'react';
 
-import Logo from './S7 Logo.png';
+import PropTypes from 'prop-types';
+
+import {
+  numberOfTransfers,
+  formatPrice,
+  formatTravelTime,
+  formatFlightTime,
+} from './formatTicketData';
+
 import classes from './Ticket.module.scss';
 
-const Ticket = () => (
-  <section className={classes.ticket}>
-    <h3 className={classes.ticket__header}>
-      <span className={classes.ticket__price}>13 400 Р</span>
-      <img src={Logo} alt="Company Logotype" />
-    </h3>
-    <div className={classes['ticket__flight-data']}>
-      <div className={classes.ticket__flight}>
-        <div className={classes.ticket__wrapper}>
-          <span className={classes.ticket__title}>MOW – HKT</span>
-          <span className={classes.ticket__description}>10:45 – 08:00</span>
-        </div>
+const Ticket = ({ ticket }) => {
+  const { price, carrier, segments } = ticket;
 
-        <div className={classes.ticket__wrapper}>
-          <span className={classes.ticket__title}>в пути</span>
-          <span className={classes.ticket__description}>21ч 15м</span>
+  return (
+    <section className={classes.ticket}>
+      <h3 className={classes.ticket__header}>
+        <span className={classes.ticket__price}>{formatPrice(price)}</span>
+        <img
+          src={`https://pics.avs.io/99/36/${carrier}.png`}
+          alt="Company Logotype"
+        />
+      </h3>
+      <div className={classes['ticket__flight-data']}>
+        <div className={classes.ticket__flight}>
+          <div className={classes.ticket__wrapper}>
+            <span className={classes.ticket__title}>
+              {segments[0].origin} – {segments[0].destination}
+            </span>
+            <span className={classes.ticket__description}>
+              {formatFlightTime(segments[0].date, segments[0].duration)}
+            </span>
+          </div>
+          <div className={classes.ticket__wrapper}>
+            <span className={classes.ticket__title}>в пути</span>
+            <span className={classes.ticket__description}>
+              {formatTravelTime(segments[0].duration)}
+            </span>
+          </div>
+          <div className={classes.ticket__wrapper}>
+            <span className={classes.ticket__title}>
+              {numberOfTransfers(segments[0].stops.length)}
+            </span>
+            <span className={classes.ticket__description}>
+              {segments[0].stops.length
+                ? segments[0].stops.join(', ')
+                : 'Без пересадок'}
+            </span>
+          </div>
         </div>
-
-        <div className={classes.ticket__wrapper}>
-          <span className={classes.ticket__title}>2 пересадки</span>
-          <span className={classes.ticket__description}>HKG, JNB</span>
+        <div className={classes.ticket__flight}>
+          <div className={classes.ticket__wrapper}>
+            <span className={classes.ticket__title}>
+              {segments[1].origin} – {segments[1].destination}
+            </span>
+            <span className={classes.ticket__description}>
+              {formatFlightTime(segments[1].date, segments[1].duration)}
+            </span>
+          </div>
+          <div className={classes.ticket__wrapper}>
+            <span className={classes.ticket__title}>в пути</span>
+            <span className={classes.ticket__description}>
+              {formatTravelTime(segments[1].duration)}
+            </span>
+          </div>
+          <div className={classes.ticket__wrapper}>
+            <span className={classes.ticket__title}>
+              {numberOfTransfers(segments[1].stops.length)}
+            </span>
+            <span className={classes.ticket__description}>
+              {segments[1].stops.length
+                ? segments[1].stops.join(', ')
+                : 'Без пересадок'}
+            </span>
+          </div>
         </div>
       </div>
+    </section>
+  );
+};
 
-      <div className={classes.ticket__flight}>
-        <div className={classes.ticket__wrapper}>
-          <span className={classes.ticket__title}>MOW – HKT</span>
-          <span className={classes.ticket__description}>11:20 – 00:50</span>
-        </div>
-
-        <div className={classes.ticket__wrapper}>
-          <span className={classes.ticket__title}>в пути</span>
-          <span className={classes.ticket__description}>13ч 30м</span>
-        </div>
-
-        <div className={classes.ticket__wrapper}>
-          <span className={classes.ticket__title}>1 пересадка</span>
-          <span className={classes.ticket__description}>HKG</span>
-        </div>
-      </div>
-    </div>
-  </section>
-);
+Ticket.propTypes = {
+  ticket: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    carrier: PropTypes.string.isRequired,
+    segments: PropTypes.arrayOf(PropTypes.shape().isRequired).isRequired,
+  }).isRequired,
+};
 
 export default Ticket;

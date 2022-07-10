@@ -1,32 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import cn from 'classnames';
 import PropTypes from 'prop-types';
 
-import s from './CustomCheckbox.module.scss';
+import classes from './CustomCheckbox.module.scss';
 
-const CustomCheckbox = ({ label }) => {
-  const [isChecked, setChecked] = useState(false);
-
-  return (
-    <label className={s.checkbox} htmlFor={label}>
-      <input
-        type="checkbox"
-        onChange={() => setChecked(!isChecked)}
-        id={label}
-      />
-      <span
-        className={cn(
-          s['checkbox--default'],
-          isChecked ? s['checkbox--checked'] : null
-        )}
-      />
-    </label>
-  );
-};
+const CustomCheckbox = ({ label, checked }) => (
+  <label className={classes.checkbox} htmlFor={label}>
+    <input type="checkbox" id={label} />
+    <span
+      className={cn(
+        classes['checkbox--default'],
+        checked ? classes['checkbox--checked'] : null
+      )}
+    />
+  </label>
+);
 
 CustomCheckbox.propTypes = {
   label: PropTypes.string.isRequired,
+  checked: PropTypes.bool.isRequired,
 };
 
 export default CustomCheckbox;

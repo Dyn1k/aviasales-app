@@ -1,22 +1,22 @@
 const FiltersName = [
   {
-    label: 'all',
+    label: 'TRANSFERS_ALL',
     name: 'Все',
   },
   {
-    label: 'withoutTransfers',
+    label: 'TRANSFERS_WITHOUT',
     name: 'Без пересадок',
   },
   {
-    label: 'oneTransfer',
+    label: 'TRANSFERS_ONE',
     name: '1 пересадка',
   },
   {
-    label: 'twoTransfers',
+    label: 'TRANSFERS_TWO',
     name: '2 пересадки',
   },
   {
-    label: 'ThreeTransfers',
+    label: 'TRANSFERS_THREE',
     name: '3 пересадки',
   },
 ];

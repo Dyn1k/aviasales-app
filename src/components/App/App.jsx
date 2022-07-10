@@ -6,7 +6,6 @@ import useWindowDimensions, {
 
 import FilterList from '../FilterList';
 import Tabs from '../Tabs';
-import ButtonShowMore from '../ButtonShowMore';
 import HeaderLogo from '../HeaderLogo';
 import TicketList from '../TicketList';
 import MobileWrapper from '../MobileWrapper';
@@ -34,7 +33,6 @@ const App = () => {
         <div className={classes['right-wrapper']}>
           <Tabs />
           <TicketList />
-          <ButtonShowMore />
         </div>
       </main>
     </div>
