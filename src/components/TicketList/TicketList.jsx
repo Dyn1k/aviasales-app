@@ -26,7 +26,7 @@ const TicketList = ({
     getSearchId();
   }, []);
 
-  useEffect(() => () => searchId && getTickets(searchId), [searchId]);
+  useEffect(() => searchId && getTickets(searchId), [searchId]);
 
   const sortTickets = (allTickets, sortValue) => {
     switch (sortValue) {
