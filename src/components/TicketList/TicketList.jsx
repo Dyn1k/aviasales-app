@@ -3,7 +3,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import * as actions from '../../actions/actions';
+import { sortTickets, pushSelectedFilters } from './helpers';
 
 import Ticket from '../Ticket';
 import ButtonShowMore from '../ButtonShowMore';
@@ -29,59 +30,6 @@ const TicketList = ({
   useEffect(() => {
     searchId && getTickets(searchId);
   }, [searchId]);
-
-  const sortTickets = (allTickets, sortValue) => {
-    switch (sortValue) {
-      case 'SORT_CHEAP': {
-        return allTickets.sort((a, b) => (a.price > b.price ? 1 : -1));
-      }
-      case 'SORT_FAST': {
-        return allTickets.sort((a, b) => {
-          const aSumDuration = a.segments[0].duration + a.segments[1].duration;
-          const bSumDuration = b.segments[0].duration + b.segments[1].duration;
-          return aSumDuration > bSumDuration ? 1 : -1;
-        });
-      }
-      case 'SORT_OPTIMAL': {
-        return allTickets.sort((a, b) => {
-          const aSumDuration = a.segments[0].duration + a.segments[1].duration;
-          const bSumDuration = b.segments[0].duration + b.segments[1].duration;
-          return aSumDuration + a.price > bSumDuration + b.price ? 1 : -1;
-        });
-      }
-      default: {
-        return allTickets;
-      }
-    }
-  };
-
-  const pushSelectedFilters = (filters) => {
-    const array = [];
-    // eslint-disable-next-line no-restricted-syntax
-    for (const key in filters) {
-      if (filter[key]) {
-        // eslint-disable-next-line default-case
-        switch (key) {
-          case 'TRANSFERS_ALL':
-            array.push(100);
-            break;
-          case 'TRANSFERS_WITHOUT':
-            array.push(0);
-            break;
-          case 'TRANSFERS_ONE':
-            array.push(1);
-            break;
-          case 'TRANSFERS_TWO':
-            array.push(2);
-            break;
-          case 'TRANSFERS_THREE':
-            array.push(3);
-            break;
-        }
-      }
-    }
-    return array;
-  };
 
   const filterTickets = (allTickets) =>
     sortTickets(allTickets, sorting).filter((ticket) => {

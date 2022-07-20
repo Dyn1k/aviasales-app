@@ -1,0 +1,12 @@
+export const SORT_CHEAP = 'SORT_CHEAP';
+export const SORT_FAST = 'SORT_FAST';
+export const SORT_OPTIMAL = 'SORT_OPTIMAL';
+export const GET_ID = 'GET_ID';
+export const STOP_RECEIVING = 'STOP_RECEIVING';
+export const GET_TICKETS = 'GET_TICKETS';
+export const SHOW_MORE_TICKETS = 'SHOW_MORE_TICKETS';
+export const TRANSFERS_ALL = 'TRANSFERS_ALL';
+export const TRANSFERS_WITHOUT = 'TRANSFERS_WITHOUT';
+export const TRANSFERS_ONE = 'TRANSFERS_ONE';
+export const TRANSFERS_TWO = 'TRANSFERS_TWO';
+export const TRANSFERS_THREE = 'TRANSFERS_THREE';

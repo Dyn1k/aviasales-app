@@ -4,11 +4,12 @@ import cn from 'classnames';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import * as actions from '../../actions/actions';
+import { SORT_CHEAP, SORT_FAST, SORT_OPTIMAL } from '../../actions/actionTypes';
 
 import classes from './Tabs.module.scss';
 
-const Tabs = ({ sorting, cheap, fast, optimal }) => {
+const Tabs = ({ sorting, sortCheap, sortFast, sortOptimal }) => {
   const tabClass = (tabName) =>
     cn({
       [classes.tab]: true,
@@ -17,13 +18,13 @@ const Tabs = ({ sorting, cheap, fast, optimal }) => {
 
   return (
     <nav className={classes.tabs}>
-      <div onClick={cheap} className={tabClass('SORT_CHEAP')}>
+      <div onClick={sortCheap} className={tabClass(SORT_CHEAP)}>
         Самый дешевый
       </div>
-      <div onClick={fast} className={tabClass('SORT_FAST')}>
+      <div onClick={sortFast} className={tabClass(SORT_FAST)}>
         Самый быстрый
       </div>
-      <div onClick={optimal} className={tabClass('SORT_OPTIMAL')}>
+      <div onClick={sortOptimal} className={tabClass(SORT_OPTIMAL)}>
         Оптимальный
       </div>
     </nav>
@@ -36,9 +37,9 @@ const mapStateToProps = (state) => ({
 
 Tabs.propTypes = {
   sorting: PropTypes.string.isRequired,
-  cheap: PropTypes.func.isRequired,
-  fast: PropTypes.func.isRequired,
-  optimal: PropTypes.func.isRequired,
+  sortCheap: PropTypes.func.isRequired,
+  sortFast: PropTypes.func.isRequired,
+  sortOptimal: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, actions)(Tabs);

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useClickAway } from 'react-use';
 
 import PropTypes from 'prop-types';
 import { getWindowDimensions } from '../../hooks/useWindowDimensions';
@@ -8,9 +9,9 @@ import FiltersName from './FiltersName';
 import classes from './FilterList.module.css';
 
 const FilterList = ({ onCloseFilters }) => {
-  const listRef = React.createRef();
+  const listRef = useRef();
 
-  const handleClick = (e) => {
+  useClickAway(listRef, (e) => {
     if (!(e.target.id === 'close-button')) {
       if (
         !listRef?.current?.contains(e.target) &&
@@ -19,12 +20,7 @@ const FilterList = ({ onCloseFilters }) => {
         onCloseFilters();
       }
     }
-  };
-
-  React.useEffect(() => {
-    document.addEventListener('click', handleClick);
-    return () => document.removeEventListener('click', handleClick);
-  }, []);
+  });
 
   return (
     <div className={classes['filter-list']} ref={listRef}>

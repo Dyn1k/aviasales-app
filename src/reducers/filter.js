@@ -1,5 +1,13 @@
 /* eslint-disable guard-for-in,no-restricted-syntax,no-case-declarations,no-continue */
 
+import {
+  TRANSFERS_ALL,
+  TRANSFERS_ONE,
+  TRANSFERS_THREE,
+  TRANSFERS_TWO,
+  TRANSFERS_WITHOUT,
+} from '../actions/actionTypes';
+
 const setFlags = (obj, flag) => {
   const newObj = Object.assign(obj);
   for (const key in newObj) {
@@ -10,7 +18,7 @@ const setFlags = (obj, flag) => {
 
 const checkFlags = (obj) => {
   for (const key in obj) {
-    if (key === 'TRANSFERS_ALL') continue;
+    if (key === TRANSFERS_ALL) continue;
     if (obj[key] === false) return false;
   }
   return true;
@@ -26,12 +34,12 @@ const initialValue = {
 
 const filter = (state = initialValue, action) => {
   switch (action.type) {
-    case 'TRANSFERS_ALL': {
+    case TRANSFERS_ALL: {
       const newObj = setFlags(state, !state.TRANSFERS_ALL);
       return { TRANSFERS_ALL: !state.TRANSFERS_ALL, ...newObj };
     }
 
-    case 'TRANSFERS_WITHOUT': {
+    case TRANSFERS_WITHOUT: {
       const newObj = {
         ...state,
         TRANSFERS_WITHOUT: !state.TRANSFERS_WITHOUT,
@@ -42,7 +50,7 @@ const filter = (state = initialValue, action) => {
       };
     }
 
-    case 'TRANSFERS_ONE': {
+    case TRANSFERS_ONE: {
       const newObj = {
         ...state,
         TRANSFERS_ONE: !state.TRANSFERS_ONE,
@@ -53,7 +61,7 @@ const filter = (state = initialValue, action) => {
       };
     }
 
-    case 'TRANSFERS_TWO': {
+    case TRANSFERS_TWO: {
       const newObj = {
         ...state,
         TRANSFERS_TWO: !state.TRANSFERS_TWO,
@@ -64,7 +72,7 @@ const filter = (state = initialValue, action) => {
       };
     }
 
-    case 'TRANSFERS_THREE': {
+    case TRANSFERS_THREE: {
       const newObj = {
         ...state,
         TRANSFERS_THREE: !state.TRANSFERS_THREE,
